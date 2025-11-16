@@ -43,10 +43,11 @@ body{background:#fff;padding:15px;line-height:1.4;color:#333;}
 .options{gap:14px;display:flex;flex-direction:column;margin-bottom:20px;}
 .option{display:flex;align-items:flex-start;line-height:1.5;}
 .yumaloq{
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
     border-radius: 50%;
     border: 3px solid #B91C1B;
+    background: #fff; /* Orqa fon oq */
     margin-right: 10px;
     flex-shrink:0;
     box-sizing: content-box;
@@ -54,7 +55,11 @@ body{background:#fff;padding:15px;line-height:1.4;color:#333;}
     align-items: center;
     justify-content: center;
 }
-.yumaloq i{font-size: 12px;}
+.yumaloq i{font-size: 14px;}
+/* X (qizil) va ✓ (yashil) ikonalar */
+.yumaloq.cross i { color: #B91C1B; } /* Qizil X */
+.yumaloq.check i { color: #22c55e; } /* Yashil check */
+.yumaloq.check { background: #fff; border-color: #B91C1B; } /* Check ham oq fon, qizil border */
 .option-text,.first-option-text{font-size:16px;font-weight:500;text-align:left;}
 .free-big{font-size:28px;font-weight:700;margin:18px 0;text-transform:uppercase;color:#B91C1B;}
 .hurry{margin-top:12px;font-size:14px;color:#555;}
@@ -114,35 +119,35 @@ footer{background:#E5E7EB;border-radius:12px;margin-top:40px;padding:18px 0;}
   <div class="bepul-header">3 kunlik BEPUL marafonda siz:</div>
   <div class="options">
     <div class="option">
-      <div class="yumaloq" style="border-color:#B91C1B;"><i class="fas fa-times" style="color:#B91C1B;"></i></div>
+      <div class="yumaloq cross"><i class="fas fa-times"></i></div>
       <label class="option-text">Yo‘talganingizda yoki aksa urganda siydik chiqib ketadimi?</label>
     </div>
     <div class="option">
-      <div class="yumaloq" style="background:#B91C1B;"><i class="fas fa-check" style="color:#fff;"></i></div>
+      <div class="yumaloq check"><i class="fas fa-check"></i></div>
       <label class="option-text">Siydikni ushlab turishni o‘rganasiz</label>
     </div>
     <div class="option">
-      <div class="yumaloq" style="border-color:#B91C1B;"><i class="fas fa-times" style="color:#B91C1B;"></i></div>
+      <div class="yumaloq cross"><i class="fas fa-times"></i></div>
       <label class="option-text">Tug‘ruqdan keyin qin bo‘shashib, avvalgi holatiga qaytmayaptimi?</label>
     </div>
     <div class="option">
-      <div class="yumaloq" style="background:#B91C1B;"><i class="fas fa-check" style="color:#fff;"></i></div>
+      <div class="yumaloq check"><i class="fas fa-check"></i></div>
       <label class="option-text">Tug‘ruqdan keyin tiklanishni tezlashtirasiz</label>
     </div>
     <div class="option">
-      <div class="yumaloq" style="border-color:#B91C1B;"><i class="fas fa-times" style="color:#B91C1B;"></i></div>
+      <div class="yumaloq cross"><i class="fas fa-times"></i></div>
       <label class="option-text">Jinsiy aloqada zavq kamayganmi?</label>
     </div>
     <div class="option">
-      <div class="yumaloq" style="background:#B91C1B;"><i class="fas fa-check" style="color:#fff;"></i></div>
+      <div class="yumaloq check"><i class="fas fa-check"></i></div>
       <label class="option-text">Jinsiy hayot sifatini oshirasiz</label>
     </div>
     <div class="option">
-      <div class="yumaloq" style="border-color:#B91C1B;"><i class="fas fa-times" style="color:#B91C1B;"></i></div>
+      <div class="yumaloq cross"><i class="fas fa-times"></i></div>
       <label class="option-text">Eringizdan oldingidek e'tibor yo'qmi?</label>
     </div>
     <div class="option">
-      <div class="yumaloq" style="background:#B91C1B;"><i class="fas fa-check" style="color:#fff;"></i></div>
+      <div class="yumaloq check"><i class="fas fa-check"></i></div>
       <label class="option-text">Yorini hayolida yagona bo’lib, sovg’alarga ko’milish texnikalarini o'rganasiz</label>
     </div>
   </div>
@@ -222,8 +227,6 @@ const modal=document.getElementById('registerModal');
 buttons.forEach(b=>b.onclick=()=>{ if(!timerRunning){ alert("Vaqt tugadi!"); return; } modal.classList.add('active'); });
 
 /* ===== GOOGLE SHEETS SEND ===== */
-
-/* === GOOGLE SHEETS SEND === */
 const SHEET_URL='https://script.google.com/macros/s/AKfycbyol0tp71woGCtJma4LD_wnp0epomoAQsE3DGhh6zHgIj_r6ry_YPRpiR6KOSeOqPuC/exec';
 
 document.getElementById('submitBtn').onclick=()=>{
