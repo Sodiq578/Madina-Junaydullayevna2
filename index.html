@@ -6,13 +6,15 @@
 <title>Madina Junaydullayevna</title>
 
 <style>
+/* ===== GLOBAL ===== */
 *{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;}
-body{background:#fff;padding:15px;}
+body{background:#fff;padding:15px;line-height:1.4;color:#333;}
 .container{max-width:420px;margin:auto;display:flex;flex-direction:column;}
-.promo{text-align:center;}
+
+/* ===== PROMO ===== */
+.promo{text-align:center;margin-bottom:25px;}
 .date-box{display:inline-block;padding:6px 16px;border:2px solid #B91C1B;border-radius:20px;font-size:14px;margin-bottom:12px;color:black;font-weight:400;}
-.title{font-weight:500;font-size:14px;white-space:nowrap;overflow:hidden;margin:8px 0;}
-.subtitle{font-weight:700;line-height:1.5;font-size:19px;}
+.subtitle{font-weight:700;line-height:1.5;font-size:19px;margin:8px 0;}
 .subtitle span{color:#d10000;}
 .doctor{position:relative;display:inline-block;}
 .doctor img{width:200px;height:auto;border-radius:12px;margin-left:-40px;margin-top:20px;}
@@ -28,24 +30,36 @@ body{background:#fff;padding:15px;}
 .pulse{animation:pulse 1.8s infinite;}
 @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(185,28,27,.7);}70%{box-shadow:0 0 0 12px rgba(185,28,27,0);}100%{box-shadow:0 0 0 0 rgba(185,28,27,0);}}
 .limit-text{margin-top:15px;font-size:12px;color:#666;}
-.timer{margin-top:5px;font-size:30px;font-weight:600;color:#B91C1B;}
+.timer{margin-top:5px;font-size:30px;font-weight:600;color:#B91C1B;text-align:center;}
+
+/* ===== BEPUL BLOK (AKKORDEON) ===== */
 .bepul{margin:35px auto 0;text-align:center;}
 .bepul-header{font-size:17px;font-weight:700;margin-bottom:18px;}
-.options{gap:14px;display:flex;flex-direction:column;margin-bottom:20px;}
-.option{display:flex;align-items:flex-start;line-height:1.5;}
-.yumaloq{
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    border: 3px solid #B91C1B;
-    margin-right: 10px;
-    margin-top: 4px;
-    flex-shrink:0;
-    box-sizing: content-box;
+.accordion{margin-bottom:20px;}
+.accordion-item{border-bottom:1px solid #eee;}
+.accordion-header{
+  display:flex;align-items:center;justify-content:space-between;padding:14px 0;
+  cursor:pointer;font-size:16px;font-weight:500;text-align:left;
 }
-.option-text,.first-option-text{font-size:16px;font-weight:500;color:#333;text-align:left;}
+.accordion-icon{
+  width:20px;height:20px;border-radius:50%;border:3px solid #B91C1B;
+  position:relative;flex-shrink:0;margin-right:10px;
+}
+.accordion-icon::before,.accordion-icon::after{
+  content:'';position:absolute;background:#B91C1B;top:50%;left:50%;transform:translate(-50%,-50%);
+}
+.accordion-icon::before{width:10px;height:2px;}
+.accordion-icon::after{width:2px;height:10px;transition:transform .3s;}
+.accordion-item.active .accordion-icon::after{transform:translate(-50%,-50%) rotate(90deg);opacity:0;}
+.accordion-text{
+  max-height:0;overflow:hidden;transition:max-height .4s ease;
+  padding:0 30px;text-align:left;font-size:16px;font-weight:500;line-height:1.5;
+}
+.accordion-item.active .accordion-text{max-height:200px;padding:12px 30px 18px;}
 .free-big{font-size:28px;font-weight:700;margin:18px 0;text-transform:uppercase;color:#B91C1B;}
 .hurry{margin-top:12px;font-size:14px;color:#555;}
+
+/* ===== FOOTER ===== */
 footer{background:#E5E7EB;border-radius:12px;margin-top:40px;padding:18px 0;}
 .footer-box{max-width:420px;margin:auto;text-align:center;padding:0 15px;}
 .footer-box h2{font-size:17px;font-weight:600;margin-bottom:8px;}
@@ -53,22 +67,29 @@ footer{background:#E5E7EB;border-radius:12px;margin-top:40px;padding:18px 0;}
 .footer-btn-telegram{background:#0088cc;color:#fff;padding:12px 18px;border:none;border-radius:12px;font-weight:600;cursor:pointer;width:260px;max-width:100%;font-size:13.5px;display:flex;align-items:center;justify-content:center;gap:8px;margin:12px auto;}
 .footer-btn-telegram img{width:18px;height:18px;}
 .footer-box p{font-size:11px;color:#555;line-height:1.4;margin:6px 0;}
+
+/* ===== MODAL ===== */
 .modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.8);justify-content:center;align-items:center;padding:15px;z-index:999;}
 .modal.active{display:flex;}
 .modal-content{background:#fff;padding:25px 20px;border-radius:14px;text-align:center;max-width:360px;width:100%;box-shadow:0 8px 20px rgba(0,0,0,.3);border:2px solid #B91C1B;}
 .modal-content input{width:100%;padding:12px;margin-bottom:12px;border:1px solid #ccc;border-radius:10px;font-size:15px;}
 .modal-btn{background:#B91C1B;color:#fff;padding:14px 18px;width:100%;border:none;border-radius:12px;font-size:17px;font-weight:600;cursor:pointer;box-shadow:0 4px 6px rgba(0,0,0,.3);border-bottom:4px solid #4c080b;}
 .modal-btn:active{transform:translateY(2px);border-bottom:2px solid #4c080b;}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width:480px){
+  .accordion-header,.accordion-text{font-size:15px;}
+  .free-big{font-size:24px;}
+  .bepul-header{font-size:16px;}
+}
 </style>
 </head>
-
 <body>
 <div class="container">
 
-<!-- ASOSIY BLOK -->
+<!-- PROMO BLOK -->
 <div class="promo">
   <div class="date-box">26–27–28 NOYABR | Soat 21:00 da</div>
-  
   <p class="subtitle">Yo‘talganingizda yoki aksa urganda siydik chiqib ketadimi? <span>Jinsiy hayotda zavq kamayganmi?</span></p>
 
   <div class="doctor">
@@ -88,27 +109,71 @@ footer{background:#E5E7EB;border-radius:12px;margin-top:40px;padding:18px 0;}
   </div>
 </div>
 
-<!-- BEPUL BLOK -->
+<!-- BEPUL BLOK (AKKORDEON) -->
 <section class="bepul">
   <div class="bepul-header">3 kunlik BEPUL marafonda siz:</div>
+  <div class="accordion">
 
-  <div class="options">
-    <div class="option">
-      <div class="yumaloq"></div>
-      <label class="first-option-text"><b>Yo‘talganingizda yoki aksa urganda siydik chiqib ketadimi?</b> Siydikni ushlab turishni o‘rganasiz</label>
+    <!-- 1 -->
+    <div class="accordion-item active">
+      <div class="accordion-header">
+        <div class="accordion-icon"></div>
+        <span>Yo‘talganingizda yoki aksa urganda siydik chiqib ketadimi?</span>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-left:auto;flex-shrink:0;">
+          <path d="M6 12L10 8L6 4" stroke="#B91C1B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="accordion-text">
+        <strong>Siydikni ushlab turishni o‘rganasiz</strong><br>
+        Mushaklarni mustahkamlash mashqlari orqali siydik o‘g‘ib ketishini to‘liq nazorat qilasiz.
+      </div>
     </div>
-    <div class="option">
-      <div class="yumaloq"></div>
-      <label class="option-text"><b>Tug‘ruqdan keyin qin bo‘shashib, avvalgi holatiga qaytmayaptimi?</b> Tug‘ruqdan keyin tiklanishni tezlashtirasiz</label>
+
+    <!-- 2 -->
+    <div class="accordion-item active">
+      <div class="accordion-header">
+        <div class="accordion-icon"></div>
+        <span>Tug‘ruqdan keyin qin bo‘shashib, avvalgi holatiga qaytmayaptimi?</span>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-left:auto;flex-shrink:0;">
+          <path d="M6 12L10 8L6 4" stroke="#B91C1B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="accordion-text">
+        <strong>Tug‘ruqdan keyin tiklanishni tezlashtirasiz</strong><br>
+        Maxsus intim gimnastika va mashqlar yordamida qin mushaklarini avvalgi elastik holatiga qaytarasiz.
+      </div>
     </div>
-    <div class="option">
-      <div class="yumaloq"></div>
-      <label class="option-text"><b>Jinsiy aloqada zavq kamayganmi?</b> Jinsiy hayot sifatini oshirasiz</label>
+
+    <!-- 3 -->
+    <div class="accordion-item active">
+      <div class="accordion-header">
+        <div class="accordion-icon"></div>
+        <span>Jinsiy aloqada zavq kamayganmi?</span>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-left:auto;flex-shrink:0;">
+          <path d="M6 12L10 8L6 4" stroke="#B91C1B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="accordion-text">
+        <strong>Jinsiy hayot sifatini oshirasiz</strong><br>
+        Mushaklarni boshqarish va sezuvchanlikni oshirish texnikalari orqali jinsiy hayotdan to‘liq zavq olasiz.
+      </div>
     </div>
-    <div class="option">
-      <div class="yumaloq"></div>
-      <label class="option-text"><b>Eringizdan oldingidek e'tibor yo'qmi?</b> Yorini hayolida yagona bo’lib, sovg’alarga ko’milish texnikalarini o'rganasiz</label>
+
+    <!-- 4 -->
+    <div class="accordion-item active">
+      <div class="accordion-header">
+        <div class="accordion-icon"></div>
+        <span>Eringizdan oldingidek e'tibor yo'qmi?</span>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-left:auto;flex-shrink:0;">
+          <path d="M6 12L10 8L6 4" stroke="#B91C1B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="accordion-text">
+        <strong>Yoriningizni hayolida yagona bo’lib, sovg‘alarga ko‘milish texnikalarini o'rganasiz</strong><br>
+        O‘ziga ishonch, jozibadorlik va munosabatlardagi yangi energiya orqali eringizning e'tiborini qaytarasiz.
+      </div>
     </div>
+
   </div>
 
   <div class="free-big">BEPUL</div>
@@ -144,7 +209,7 @@ footer{background:#E5E7EB;border-radius:12px;margin-top:40px;padding:18px 0;}
 </div> <!-- container -->
 
 <script>
-/* === TIMER === */
+/* ===== TIMER ===== */
 let sec=59,min=1,timerRunning=true;
 const timerEl=document.getElementById('timer');
 const buttons=document.querySelectorAll('.btn');
@@ -167,7 +232,7 @@ const buttons=document.querySelectorAll('.btn');
   setTimeout(updateTimer,1000);
 })();
 
-/* === PHONE MASK === */
+/* ===== PHONE MASK ===== */
 const phoneInput=document.getElementById('userPhone');
 phoneInput.addEventListener('input',e=>{
   let v=e.target.value.replace(/\D/g,'');
@@ -181,57 +246,30 @@ phoneInput.addEventListener('input',e=>{
   e.target.value=f;
 });
 
-/* === MODAL === */
+/* ===== MODAL ===== */
 const modal=document.getElementById('registerModal');
-buttons.forEach(b=>b.onclick=()=>{
-  if(!timerRunning){ alert("Vaqt tugadi!"); return; }
-  modal.classList.add('active');
-});
+buttons.forEach(b=>b.onclick=()=>{ if(!timerRunning){ alert("Vaqt tugadi!"); return; } modal.classList.add('active'); });
 
-/* === GOOGLE SHEETS SEND === */
-const SHEET_URL='https://script.google.com/macros/s/AKfycbyol0tp71woGCtJma4LD_wnp0epomoAQsE3DGhh6zHgIj_r6ry_YPRpiR6KOSeOqPuC/exec';
-
+/* ===== GOOGLE SHEETS SEND ===== */
+const SHEET_URL='YOUR_GOOGLE_SCRIPT_URL';
 document.getElementById('submitBtn').onclick=()=>{
   if(!timerRunning){ alert("Vaqt tugadi!"); return; }
-
   const name=document.getElementById('userName').value.trim();
   let phone=phoneInput.value.replace(/\D/g,'');
-
   if(phone.startsWith('998')) phone=phone.slice(3);
   if(phone.length!==9){ alert('Telefon: 9 ta raqam kiriting!'); return; }
   if(!name || name.length<2){ alert('To‘g‘ri ism kiriting!'); return; }
-
-  fetch(SHEET_URL,{
-    method:'POST',
-    mode:'no-cors',
-    body:new URLSearchParams({name,phone:'+998'+phone})
-  }).catch(()=>{});
-
+  fetch(SHEET_URL,{method:'POST',mode:'no-cors',body:new URLSearchParams({name,phone:'+998'+phone})}).catch(()=>{});
   setTimeout(()=>window.location.href='success.html',1200);
 };
 
-/* === LAZY META PIXEL (SAHIFA OCHILGANIDAN KEYIN) === */
-window.addEventListener('load',()=>{
-  setTimeout(()=>{
-    !function(f,b,e,v,n,t,s){
-      if(f.fbq) return;
-      n=f.fbq=function(){n.callMethod?
-        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-      if(!f._fbq) f._fbq=n;
-      n.push=n; n.loaded=!0; n.version='2.0'; n.queue=[];
-      t=b.createElement(e); t.async=!0; t.src=v;
-      s=b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t,s);
-    }(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init','994529509292030');
-    fbq('track','PageView');
-  },1200);
+/* ===== AKKORDEON (faqat yopish/ochish, barchasi ochiq boshlanadi) ===== */
+document.querySelectorAll('.accordion-header').forEach(header => {
+  header.addEventListener('click', () => {
+    const item = header.parentElement;
+    item.classList.toggle('active');
+  });
 });
 </script>
-
-<noscript>
-  <img height="1" width="1" style="display:none"
-  src="https://www.facebook.com/tr?id=994529509292030&ev=PageView&noscript=1">
-</noscript>
 </body>
 </html>
