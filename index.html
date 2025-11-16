@@ -5,6 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Madina Junaydullayevna</title>
 
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" 
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" 
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 <style>
 /* ===== GLOBAL ===== */
 *{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;}
@@ -28,34 +33,29 @@ body{background:#fff;padding:15px;line-height:1.4;color:#333;}
 .btn{margin:15px auto 0;background:#B91C1B;color:#fff;padding:18px 24px;width:300px;font-size:17px;border:none;border-radius:12px;font-weight:600;cursor:pointer;box-shadow:0 4px 6px rgba(0,0,0,.3);border-bottom:4px solid #4c080b;transition:all .2s;}
 .btn:active{transform:translateY(2px);border-bottom:2px solid #4c080b;}
 .pulse{animation:pulse 1.8s infinite;}
-@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(185,28,27,.7);}70%{box-shadow:0 0 0 12px rgba(185,28,27,0);}100%{box-shadow:0 0 0 0 rgba(185,28,27,0);}}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(185,28,27,.7);}70%{box-shadow:0 0 0 12px rgba(185,28,27,0);}100%{box-shadow:0 0 0 0 rgba(185,28,27,0);} }
 .limit-text{margin-top:15px;font-size:12px;color:#666;}
 .timer{margin-top:5px;font-size:30px;font-weight:600;color:#B91C1B;text-align:center;}
 
-/* ===== BEPUL BLOK (AKKORDEON) ===== */
+/* ===== BEPUL BLOK ===== */
 .bepul{margin:35px auto 0;text-align:center;}
 .bepul-header{font-size:17px;font-weight:700;margin-bottom:18px;}
-.accordion{margin-bottom:20px;}
-.accordion-item{border-bottom:1px solid #eee;}
-.accordion-header{
-  display:flex;align-items:center;justify-content:space-between;padding:14px 0;
-  cursor:pointer;font-size:16px;font-weight:500;text-align:left;
+.options{gap:14px;display:flex;flex-direction:column;margin-bottom:20px;}
+.option{display:flex;align-items:flex-start;line-height:1.5;}
+.yumaloq{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 3px solid #B91C1B;
+    margin-right: 10px;
+    flex-shrink:0;
+    box-sizing: content-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-.accordion-icon{
-  width:20px;height:20px;border-radius:50%;border:3px solid #B91C1B;
-  position:relative;flex-shrink:0;margin-right:10px;
-}
-.accordion-icon::before,.accordion-icon::after{
-  content:'';position:absolute;background:#B91C1B;top:50%;left:50%;transform:translate(-50%,-50%);
-}
-.accordion-icon::before{width:10px;height:2px;}
-.accordion-icon::after{width:2px;height:10px;transition:transform .3s;}
-.accordion-item.active .accordion-icon::after{transform:translate(-50%,-50%) rotate(90deg);opacity:0;}
-.accordion-text{
-  max-height:0;overflow:hidden;transition:max-height .4s ease;
-  padding:0 30px;text-align:left;font-size:16px;font-weight:500;line-height:1.5;
-}
-.accordion-item.active .accordion-text{max-height:200px;padding:12px 30px 18px;}
+.yumaloq i{font-size: 12px;}
+.option-text,.first-option-text{font-size:16px;font-weight:500;text-align:left;}
 .free-big{font-size:28px;font-weight:700;margin:18px 0;text-transform:uppercase;color:#B91C1B;}
 .hurry{margin-top:12px;font-size:14px;color:#555;}
 
@@ -78,7 +78,7 @@ footer{background:#E5E7EB;border-radius:12px;margin-top:40px;padding:18px 0;}
 
 /* ===== RESPONSIVE ===== */
 @media (max-width:480px){
-  .accordion-header,.accordion-text{font-size:15px;}
+  .option-text,.first-option-text{font-size:15px;}
   .free-big{font-size:24px;}
   .bepul-header{font-size:16px;}
 }
@@ -109,71 +109,42 @@ footer{background:#E5E7EB;border-radius:12px;margin-top:40px;padding:18px 0;}
   </div>
 </div>
 
-<!-- BEPUL BLOK (AKKORDEON) -->
+<!-- BEPUL BLOK -->
 <section class="bepul">
   <div class="bepul-header">3 kunlik BEPUL marafonda siz:</div>
-  <div class="accordion">
-
-    <!-- 1 -->
-    <div class="accordion-item active">
-      <div class="accordion-header">
-        <div class="accordion-icon"></div>
-        <span>Yo‘talganingizda yoki aksa urganda siydik chiqib ketadimi?</span>
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-left:auto;flex-shrink:0;">
-          <path d="M6 12L10 8L6 4" stroke="#B91C1B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </div>
-      <div class="accordion-text">
-        <strong>Siydikni ushlab turishni o‘rganasiz</strong><br>
-        Mushaklarni mustahkamlash mashqlari orqali siydik o‘g‘ib ketishini to‘liq nazorat qilasiz.
-      </div>
+  <div class="options">
+    <div class="option">
+      <div class="yumaloq" style="border-color:#B91C1B;"><i class="fas fa-times" style="color:#B91C1B;"></i></div>
+      <label class="option-text">Yo‘talganingizda yoki aksa urganda siydik chiqib ketadimi?</label>
     </div>
-
-    <!-- 2 -->
-    <div class="accordion-item active">
-      <div class="accordion-header">
-        <div class="accordion-icon"></div>
-        <span>Tug‘ruqdan keyin qin bo‘shashib, avvalgi holatiga qaytmayaptimi?</span>
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-left:auto;flex-shrink:0;">
-          <path d="M6 12L10 8L6 4" stroke="#B91C1B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </div>
-      <div class="accordion-text">
-        <strong>Tug‘ruqdan keyin tiklanishni tezlashtirasiz</strong><br>
-        Maxsus intim gimnastika va mashqlar yordamida qin mushaklarini avvalgi elastik holatiga qaytarasiz.
-      </div>
+    <div class="option">
+      <div class="yumaloq" style="background:#B91C1B;"><i class="fas fa-check" style="color:#fff;"></i></div>
+      <label class="option-text">Siydikni ushlab turishni o‘rganasiz</label>
     </div>
-
-    <!-- 3 -->
-    <div class="accordion-item active">
-      <div class="accordion-header">
-        <div class="accordion-icon"></div>
-        <span>Jinsiy aloqada zavq kamayganmi?</span>
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-left:auto;flex-shrink:0;">
-          <path d="M6 12L10 8L6 4" stroke="#B91C1B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </div>
-      <div class="accordion-text">
-        <strong>Jinsiy hayot sifatini oshirasiz</strong><br>
-        Mushaklarni boshqarish va sezuvchanlikni oshirish texnikalari orqali jinsiy hayotdan to‘liq zavq olasiz.
-      </div>
+    <div class="option">
+      <div class="yumaloq" style="border-color:#B91C1B;"><i class="fas fa-times" style="color:#B91C1B;"></i></div>
+      <label class="option-text">Tug‘ruqdan keyin qin bo‘shashib, avvalgi holatiga qaytmayaptimi?</label>
     </div>
-
-    <!-- 4 -->
-    <div class="accordion-item active">
-      <div class="accordion-header">
-        <div class="accordion-icon"></div>
-        <span>Eringizdan oldingidek e'tibor yo'qmi?</span>
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-left:auto;flex-shrink:0;">
-          <path d="M6 12L10 8L6 4" stroke="#B91C1B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </div>
-      <div class="accordion-text">
-        <strong>Yoriningizni hayolida yagona bo’lib, sovg‘alarga ko‘milish texnikalarini o'rganasiz</strong><br>
-        O‘ziga ishonch, jozibadorlik va munosabatlardagi yangi energiya orqali eringizning e'tiborini qaytarasiz.
-      </div>
+    <div class="option">
+      <div class="yumaloq" style="background:#B91C1B;"><i class="fas fa-check" style="color:#fff;"></i></div>
+      <label class="option-text">Tug‘ruqdan keyin tiklanishni tezlashtirasiz</label>
     </div>
-
+    <div class="option">
+      <div class="yumaloq" style="border-color:#B91C1B;"><i class="fas fa-times" style="color:#B91C1B;"></i></div>
+      <label class="option-text">Jinsiy aloqada zavq kamayganmi?</label>
+    </div>
+    <div class="option">
+      <div class="yumaloq" style="background:#B91C1B;"><i class="fas fa-check" style="color:#fff;"></i></div>
+      <label class="option-text">Jinsiy hayot sifatini oshirasiz</label>
+    </div>
+    <div class="option">
+      <div class="yumaloq" style="border-color:#B91C1B;"><i class="fas fa-times" style="color:#B91C1B;"></i></div>
+      <label class="option-text">Eringizdan oldingidek e'tibor yo'qmi?</label>
+    </div>
+    <div class="option">
+      <div class="yumaloq" style="background:#B91C1B;"><i class="fas fa-check" style="color:#fff;"></i></div>
+      <label class="option-text">Yorini hayolida yagona bo’lib, sovg’alarga ko’milish texnikalarini o'rganasiz</label>
+    </div>
   </div>
 
   <div class="free-big">BEPUL</div>
@@ -187,7 +158,7 @@ footer{background:#E5E7EB;border-radius:12px;margin-top:40px;padding:18px 0;}
   <h2>Madina Junaydullayevna</h2>
   <a href="tel:+9989390688766">+998 (93) 906 88 766</a>
   <button class="footer-btn-telegram" onclick="window.open('https://t.me/simonaladyfit_admin','_blank')">
-    <img src="https://cdn-icons-png.flaticon.com/32/2111/2111646.png">Telegramdan bog'lanish
+    <img src="https://cdn-icons-png.flaticon.com/32/2111/2111646.png" alt="Telegram">Telegramdan bog'lanish
   </button>
   <p>“Madina Junaydullayevna” YATT Toshkent, Yashnobod tumani...</p>
   <p>Facebook yoki boshqa platformalar bilan bog‘liq emas</p>
@@ -251,7 +222,10 @@ const modal=document.getElementById('registerModal');
 buttons.forEach(b=>b.onclick=()=>{ if(!timerRunning){ alert("Vaqt tugadi!"); return; } modal.classList.add('active'); });
 
 /* ===== GOOGLE SHEETS SEND ===== */
-const SHEET_URL='YOUR_GOOGLE_SCRIPT_URL';
+
+/* === GOOGLE SHEETS SEND === */
+const SHEET_URL='https://script.google.com/macros/s/AKfycbyol0tp71woGCtJma4LD_wnp0epomoAQsE3DGhh6zHgIj_r6ry_YPRpiR6KOSeOqPuC/exec';
+
 document.getElementById('submitBtn').onclick=()=>{
   if(!timerRunning){ alert("Vaqt tugadi!"); return; }
   const name=document.getElementById('userName').value.trim();
@@ -262,14 +236,6 @@ document.getElementById('submitBtn').onclick=()=>{
   fetch(SHEET_URL,{method:'POST',mode:'no-cors',body:new URLSearchParams({name,phone:'+998'+phone})}).catch(()=>{});
   setTimeout(()=>window.location.href='success.html',1200);
 };
-
-/* ===== AKKORDEON (faqat yopish/ochish, barchasi ochiq boshlanadi) ===== */
-document.querySelectorAll('.accordion-header').forEach(header => {
-  header.addEventListener('click', () => {
-    const item = header.parentElement;
-    item.classList.toggle('active');
-  });
-});
 </script>
 </body>
 </html>
